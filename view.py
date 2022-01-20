@@ -5,13 +5,15 @@ app = Bottle()
 
 from twitchAPI.twitch import Twitch
 
-db = TinyDB('db.json')
+#db = TinyDB('db.json')
 reseults = TinyDB('score2.json')
 
 
 
 @app.route('/')
 def index():
+     
+     db = TinyDB('db.json')
      """Home Page"""
      print(db.all())
      for item in db:
@@ -21,10 +23,9 @@ def index():
      done = []
      for user in reseults:
           Fruit = Query()
-          print( len(db.search(Fruit.name == user["name"])))
+          print(user["name"],len(db.search(Fruit.name == user["name"])), db.search(Fruit.name == user["name"]))
           if len(db.search(Fruit.name == user["name"]))> 0:
                submitted = db.search(Fruit.name == user["name"])[0]["thing"]
-               print(db.search(Fruit.name == user["name"])[0]["thing"])
           else:
                submitted= ""
           done.append([user["name"], user["score"], submitted])
@@ -62,6 +63,8 @@ def formhandler():
 
 @app.route('/add_person', method="POST")
 def formhandler():  
+     
+     db = TinyDB('db.json')
      cur = request.forms.get("name")
      print(cur)
      if cur:
@@ -70,8 +73,20 @@ def formhandler():
 
 @app.route('/reset')
 def reset():
+     
+     db = TinyDB('db.json')
      db.truncate()
      redirect("/")
+
+
+
+@app.route('/newt')
+def clerascores():
+     
+     db = TinyDB('score2.json')
+     db.truncate()
+     redirect("/")
+
 
 
 

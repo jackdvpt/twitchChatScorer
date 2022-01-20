@@ -40,6 +40,8 @@
              </form>
 
 
+<a href="/reset" class="button">Clear Submissions</a>
+<a href="/newt" class="button">Clear Scores</a>
 </body>
 
 <html>
