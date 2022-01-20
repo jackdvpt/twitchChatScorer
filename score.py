@@ -22,7 +22,10 @@ def main():
         splitted = resp.split("!")
         if "!guess" in resp:
             print(splitted[0][1:], splitted[2][6:])
-            db.insert({'name': splitted[0][1:], 'thing': splitted[2][6:]})
+            Fruit = Query()
+            print(len(db.search(Fruit.name == splitted[0][1:])))
+            if len(db.search(Fruit.name == splitted[0][1:]))== 0: 
+                db.insert({'name': splitted[0][1:], 'thing': splitted[2][6:]})
 if __name__ == "__main__":
     print("ello")
     main()

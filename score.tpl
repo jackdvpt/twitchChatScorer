@@ -155,7 +155,12 @@ body, html {
       <div class="pos">
         2
       </div>
+      %if "profile" in scores[1]:
       <div class="pic" style="background-image: url({{scores[1]["profile"]}})"></div>
+      % else : 
+      <div class="pic" style="background-image: url(https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-300x300.png)"></div>
+
+      %end
       <div class="name">
         {{scores[1]["name"]}}
       </div>
@@ -168,7 +173,12 @@ body, html {
       <div class="pos">
         1
       </div>
+            %if "profile" in scores[0]:
       <div class="pic" style="background-image: url({{scores[0]["profile"]}})"></div>
+      % else : 
+      <div class="pic" style="background-image: url(https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-300x300.png)"></div>
+
+      %end
       <div class="name">
         {{scores[0]["name"]}}
       </div>
@@ -180,7 +190,12 @@ body, html {
       <div class="pos">
         3
       </div>
+          %if "profile" in scores[2]:
       <div class="pic" style="background-image: url({{scores[2]["profile"]}})"></div>
+      % else : 
+      <div class="pic" style="background-image: url(https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-300x300.png)"></div>
+
+      %end
       <div class="name">
         {{scores[2]["name"]}}
       </div>
@@ -198,8 +213,12 @@ body, html {
     <div class="item">
       <div class="pos">
         {{num}}
-      </div>
+      </div>    
+      %if "profile" in person:
       <div class="pic" style="background-image: url({{person["profile"]}})"></div>
+      % else: 
+      <div class="pic" style="background-image: url(https://static-cdn.jtvnw.net/user-default-pictures-uv/13e5fa74-defa-11e9-809c-784f43822e80-profile_image-300x300.png)"></div>
+      %end
       <div class="name">
         {{person["name"]}}
       </div>

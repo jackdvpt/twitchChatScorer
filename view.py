@@ -13,6 +13,7 @@ reseults = TinyDB('score2.json')
 @app.route('/')
 def index():
      """Home Page"""
+     print(db.all())
      for item in db:
           Person = Query()
           if len(reseults.search(Person.name == item["name"]))< 1:
@@ -20,9 +21,10 @@ def index():
      done = []
      for user in reseults:
           Fruit = Query()
-          print(db.search(Fruit.name == user["name"]))
+          print( len(db.search(Fruit.name == user["name"])))
           if len(db.search(Fruit.name == user["name"]))> 0:
                submitted = db.search(Fruit.name == user["name"])[0]["thing"]
+               print(db.search(Fruit.name == user["name"])[0]["thing"])
           else:
                submitted= ""
           done.append([user["name"], user["score"], submitted])
@@ -61,7 +63,9 @@ def formhandler():
 @app.route('/add_person', method="POST")
 def formhandler():  
      cur = request.forms.get("name")
-     db.insert({'name': cur, 'score': ""})
+     print(cur)
+     if cur:
+          db.insert({'name': cur, 'score': "", 'thing':""})
      redirect("/")
 
 @app.route('/reset')
