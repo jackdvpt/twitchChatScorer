@@ -8,7 +8,7 @@ from tinydb import TinyDB, Query
 def main():
     server = 'irc.chat.twitch.tv'
     port = 6667
-    db = TinyDB('db.json')
+    db = TinyDB('warehouse.json')
 
     sock.connect((server, port))
     print("im here")

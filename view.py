@@ -1,5 +1,6 @@
 from tinydb import TinyDB, Query
 from bottle import Bottle, template, request, redirect
+import score
 
 app = Bottle()
 
@@ -8,12 +9,22 @@ from twitchAPI.twitch import Twitch
 #db = TinyDB('db.json')
 reseults = TinyDB('score2.json')
 
-
+def openDB():
+     db=TinyDB("db.json")
+     newt = TinyDB("warehouse.json")
+     for answer in newt:
+          name = answer["name"]
+          corn = Query()
+          if len(db.search(corn.name == name))< 1:
+               print("adding")
+               db.insert({'name': name, 'thing':answer["thing"] })
+     newt.truncate()
+     return db
 
 @app.route('/')
 def index():
      
-     db = TinyDB('db.json')
+     db = openDB()
      """Home Page"""
      print(db.all())
      for item in db:
@@ -64,7 +75,7 @@ def formhandler():
 @app.route('/add_person', method="POST")
 def formhandler():  
      
-     db = TinyDB('db.json')
+     db = openDB()
      cur = request.forms.get("name")
      print(cur)
      if cur:
@@ -73,8 +84,8 @@ def formhandler():
 
 @app.route('/reset')
 def reset():
-     
-     db = TinyDB('db.json')
+     db=TinyDB("db.json")
+     print("resttting")
      db.truncate()
      redirect("/")
 
@@ -83,7 +94,7 @@ def reset():
 @app.route('/newt')
 def clerascores():
      
-     db = TinyDB('score2.json')
+     db = TinyDB("score2.json")
      db.truncate()
      redirect("/")
 
@@ -92,4 +103,5 @@ def clerascores():
 
 
 if __name__ == '__main__':
+    score.main
     app.run()
