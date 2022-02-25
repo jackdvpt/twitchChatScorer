@@ -4,3 +4,9 @@ so the bot would need to
 - [x] let you award points to each person
 - [x] show the people on a leaderboard
 - add non chat members to the board 
+
+
+
+AFTER INKMO STREAM
+- [] Breaks at 14
+- [] needs a better font on the points
