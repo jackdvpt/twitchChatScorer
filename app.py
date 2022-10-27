@@ -2,6 +2,7 @@ from tinydb import TinyDB, Query, where
 from bottle import Bottle, template, response, request, redirect, static_file
 import json
 import config
+import operator
 
 app = Bottle()
 
@@ -73,7 +74,7 @@ def scoreboard():
     return template(
         'score', {
             'scores':
-            sorted(reseults.all(), key=lambda i: int(i['score']), reverse=True)
+            sorted(reseults.all(), key=lambda i: float(i['score']), reverse=True)
         })
 
 

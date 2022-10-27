@@ -1,5 +1,5 @@
 const client = new tmi.Client({
-  channels: ['inkmo_']
+  channels: ['jackdvpt']
 });
 
 function send() {
@@ -18,6 +18,9 @@ function send() {
 
   $("#myTable tr").remove();
 }
+
+
+
 function sendNonChat() {
   const divElem = document.querySelector(".customTable");
   const inputElements = divElem.querySelectorAll("input, select, checkbox, textarea")
@@ -34,6 +37,7 @@ function sendNonChat() {
   $('#CustomName').val('');
 }
 function addRow(name, thing) {
+  console.log(name, thing)
   var table = document.getElementById("myTable");
   var row = table.insertRow(0);
 
@@ -41,7 +45,7 @@ function addRow(name, thing) {
   var c2 = row.insertCell(1)
   var c3 = row.insertCell(2)
 
-
+  c1.className = "named"
   c1.innerHTML = name
   c2.innerHTML = thing
   c3.innerHTML = `<input type="number" id="` + name + `" name="` + name + `"
@@ -55,6 +59,18 @@ client.on("connected", () => {
   console.log('Reading from Twitch! ✅')
 
 });
+
+client.on("disconnected", () => {
+  let ele = document.getElementById('container');
+  let node = document.createTextNode('done Reading from Twitch! ✅');
+  ele.appendChild(node);
+  console.log('done Reading from Twitch! ✅')
+
+});
+
+function dc(){
+  client.disconnect();
+}
 client.connect();
 client.on('message', (channel, tags, message, self) => {
 

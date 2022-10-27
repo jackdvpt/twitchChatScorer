@@ -16,7 +16,7 @@
 
 
         .name {
-            /* width: 60%;*/
+            width: 300px;
             font-size: 35px;
             font-family: 'Fredoka One', cursive;
 

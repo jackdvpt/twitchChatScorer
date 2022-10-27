@@ -26,11 +26,12 @@ You'll then need to create a config.py file to contain a twitch dev app public k
 
 
 ## TODO
-- [ ] Add support for decimals
-- [ ] Add support for Fix wider names 
-- [ ] Random scores (ie set a min max and then give the answers a random score if you tick the box)
-- [ ] Add 0 support (IE let a score of 0/empty put them onto the board with nothing)
+- [x] Add support for decimals
+- [x] Fix wider names 
+- [x] let the host disconnect from twitch
 - [ ] Let the host hide the names on the scoring screen
 - [ ] Add feedback so you know it worked when you clicked submit
 - [ ] Add a simple scoreboard for the host  
+- [ ] Random scores (ie set a min max and then give the answers a random score if you tick the box)
+- [ ] Add 0 support (IE let a score of 0/empty put them onto the board with nothing)
 - [ ] Add a screen to show the answers on screen

@@ -31,11 +31,18 @@ button {
     <tbody><tr><td>NAME<input id="CustomName" name="CustomName" ></td><td> SCORE<input type="number" id="CustomScore" name="CustomScore" min="-2147483648" max="2147483647"></td></tr></tbody></table>
 
  <div id='container'>
+
         <p>
         </p>
     </div>
     <button onclick="send()"> SUBMIT SCORES</button>
+    <button onclick="dc()"> DISCONNECT FROM TWITCH</button>
      
+    <script>
+     
+    </script>
+    
+  <input type="checkbox" name="named"> Name 
     <table class="myTable" id="myTable">
 
     </table>
