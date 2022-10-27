@@ -46,7 +46,7 @@ function addRow(name, thing) {
   var c3 = row.insertCell(2)
 
   c1.className = "named"
-  c1.innerHTML = name
+  c1.innerHTML = ""
   c2.innerHTML = thing
   c3.innerHTML = `<input type="number" id="` + name + `" name="` + name + `"
   min="-2147483648" max="2147483647">`
